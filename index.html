@@ -1,36 +1,229 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta charset="UTF-8" />
-    <title>MT Weather | Home</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="box1">
-      <header class="logo-header">
-        <a class="logo" href="#">MT Weather</a>
-      </header>
-      
-      <header class="locations-header">
-        <a class="locations" href="#">About</a>
-      </header>
-      
-    </div>
-    <div class="box2">
-      <h1>Weather forcast specialized for Motueka & Tasman</h1>
-    </div>
+  <!-- Coding by CodingLab | www.codinglabweb.com -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <div class="box3">
-      <a class="locations">Motueka</a>
-      <a class="weatherwidget-io" href="https://forecast7.com/en/n41d12173d00/motueka/" data-label_1="MOTUEKA" data-label_2="WEATHER" >MOTUEKA WEATHER</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');</script>
-    </div>
-  </body>
-  <footer>
-    <h1 class="copyright1">MT Weather©2022</h1>
-    <p class="copyright2">All rights resirved to Wombat Studios</p>
-    <p class="copyright3">last update:3/3/22</p>
-    <p class="copyright3">**Website still under construction**</p>
-  </footer>
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!----===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!--<title>Dashboard Sidebar Menu</title>--> 
+</head>
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <!--<img src="logo.png" alt="">-->
+                </span>
+
+                <div class="text logo-text">
+                    <span class="name">Mt Weather</span>
+                    <span class="profession">Wombat Studios</span>
+                </div>
+            </div>
+
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+
+        <div class="menu-bar">
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links">
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-cloud icon' onclick="getweather()"></i>
+                            <span class="text nav-text">Motueka</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-cloud icon'></i>
+                            <span class="text nav-text">Tasman</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-cloud icon' ></i>
+                            <span class="text nav-text">Mapua</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-cloud icon' ></i>
+                            <span class="text nav-text">Richmond</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-question-mark icon' onclick="createFaction()"></i>
+                            <span class="text nav-text">About</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+
+    </nav>
+
+    <section class="home">
+        <div class="text">Mt Weather</div>
+        <div class="home2" id="box1">
+          <p  id="aboutheader" class="text2">Choose your location</p>
+          <p id="about" class="text3"></p>
+          <p id="about2" class="text3"></p>
+          <p id="about3" class="text3"></p>
+          <div id="weather">
+            <p class="text4" id="day1"></p>
+            <script>
+        (function(d, s, id) {
+            if (d.getElementById(id)) {
+                if (window.__TOMORROW__) {
+                    window.__TOMORROW__.renderWidget();
+                }
+                return;
+            }
+            const fjs = d.getElementsByTagName(s)[0];
+            const js = d.createElement(s);
+            js.id = id;
+            js.src = "https://www.tomorrow.io/v1/widget/sdk/sdk.bundle.min.js";
+
+            fjs.parentNode.insertBefore(js, fjs);
+        })(document, 'script', 'tomorrow-sdk');
+        </script>
+
+        <div class="tomorrow"
+           data-location-id="079832"
+           data-language="EN"
+           data-unit-system="METRIC"
+           data-skin="light"
+           data-widget-type="upcoming"
+           style="padding-bottom:22px;position:relative;"
+        >
+          <a
+            href="https://www.tomorrow.io/weather/"
+            rel="nofollow noopener noreferrer"
+            target="_blank"
+            style="position: absolute; bottom: 0; transform: translateX(-50%); left: 50%;"
+          >
+            <img
+              alt="Powered by Tomorrow.io"
+              src="https://weather-website-client.tomorrow.io/img/powered-by-tomorrow.svg"
+              width="140"
+              height="15"
+            />
+          </a>
+        </div>
+          </div>
+        </div>
+    </section>
+    
+    <script>
+      let weatherbox = document.getElementById('weather');
+      weatherbox.style.display = 'none';
+    </script>
+    <script>
+      var color;
+      const body = document.querySelector('body'),
+      sidebar = body.querySelector('nav'),
+      toggle = body.querySelector(".toggle"),
+      searchBtn = body.querySelector(".search-box"),
+      modeSwitch = body.querySelector(".toggle-switch"),
+      modeText = body.querySelector(".mode-text");
+
+
+toggle.addEventListener("click" , () =>{
+    sidebar.classList.toggle("close");
+})
+
+searchBtn.addEventListener("click" , () =>{
+    sidebar.classList.remove("close");
+})
+
+modeSwitch.addEventListener("click" , () =>{
+    body.classList.toggle("dark");
+    color = "light";
+    console.log(color);
+    
+    if(body.classList.contains("dark")){
+        modeText.innerText = "Light mode";
+        color = "dark";
+        console.log(color);
+    }else{
+        modeText.innerText = "Dark mode";
+        
+    }
+});
+    </script>
+    <script>
+      function createFaction() {
+        
+        document.getElementById('aboutheader').innerHTML = "About";
+        document.getElementById('about').innerHTML = "Mt Weather is a free weather survise for the Motueka Tasman region";
+        document.getElementById('about2').innerHTML = "All rights resirved, Wombat studios ©2220";
+        document.getElementById('about3').innerHTML = "Weather data powered by Tomorrow.io, ui design created by CodingLab. **Still under construction**";
+        let title = document.getElementById('box1');
+        title.style.width = '250px';
+        title.style.marginLeft = '60px';
+        title.style.height = '150px';
+        let weatherbox = document.getElementById('weather');
+        weatherbox.style.display = 'none';
+        let weatherbox2 = document.getElementById('weather2');
+        weatherbox2.style.display = 'none';
+        let weatherbox3 = document.getElementById('weather3');
+        weatherbox3.style.display = 'none';
+      }
+    </script>
+    <script>
+      function getweather() {
+        let title = document.getElementById('box1');
+        title.style.width = '311px';
+        title.style.height = '550px'
+        title.style.marginLeft = '15.5px';
+        title.style.overflowX = 'auto';
+        document.getElementById('aboutheader').innerHTML = "Motueka";
+        let weatherbox = document.getElementById('weather');
+        weatherbox.style.width = '300px';
+        weatherbox.style.height = '140px';
+        weatherbox.style.marginLeft = '3.5px';
+        weatherbox.style.float = 'left';
+        weatherbox.style.display = 'block'
+        document.getElementById('aboutheader').innerHTML = "Motueka";
+        document.getElementById('about').innerHTML = "";
+        document.getElementById('about2').innerHTML = "";
+      }
+    </script>
+</body>
 </html>
